@@ -22,25 +22,31 @@ socket.on('updated_data', function(coords) {
 
 cEl.mouseup(function(){
 	mouseDown = false;
-})
+});
 
 cEl.mousemove(function(e){
 	if(mouseDown) {
+		var offset = $(this).offset();
 		context.beginPath();
 		context.moveTo(startX,startY);
-		context.lineTo(e.pageX,e.pageY);
+		endX = e.pageX - offset.left;
+		endY = e.pageY - offset.top;
+		context.lineTo(endX,endY);
 		context.stroke();
 		socket.emit('lineDrawn', {
 			startX: startX,
-			endX: e.pageX,
+			endX: endX,
 			startY: startY,
-			endY: e.pageY
+			endY: endY
 		});
+		startX = endX;
+		startY = endY;
 	}
 })
 
 cEl.mousedown(function(e){
+	var offset = $(this).offset();
 	mouseDown = true;
-	startX = e.pageX;
-	startY = e.pageY;
+	startX = e.pageX - offset.left;
+	startY = e.pageY - offset.top;
 });
