@@ -5,6 +5,7 @@ var cEl = $('#myCanvas');
 var socket = require('./client')
 
 var started = false;
+var mouseDown = false;
 
 var startX = 0;
 var startY = 0;
@@ -19,24 +20,27 @@ socket.on('updated_data', function(coords) {
 	context.stroke();
 });
 
-cEl.mousedown(function(e){
-	if (!started) {
-		startX = e.pageX;
-		startY = e.pageY;
-		started = true;
-	} else {
-		endX = e.pageX;
-		endY = e.pageY;
+cEl.mouseup(function(){
+	mouseDown = false;
+})
+
+cEl.mousemove(function(e){
+	if(mouseDown) {
 		context.beginPath();
 		context.moveTo(startX,startY);
-		context.lineTo(endX,endY);
+		context.lineTo(e.pageX,e.pageY);
 		context.stroke();
 		socket.emit('lineDrawn', {
-			startX : startX,
-			endX: endX,
+			startX: startX,
+			endX: e.pageX,
 			startY: startY,
-			endY: endY
-		})
-		started = false;
+			endY: e.pageY
+		});
 	}
+})
+
+cEl.mousedown(function(e){
+	mouseDown = true;
+	startX = e.pageX;
+	startY = e.pageY;
 });
