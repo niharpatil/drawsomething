@@ -14,8 +14,18 @@ server.listen(port, function(){
 
 var io = require('socket.io')(server);
 
+var drawnObjects = [];
+
 io.on('connection', function(socket){
+	socket.emit('join_session', drawnObjects);
+	io.emit('user_joined', socket.id);
 	socket.on('lineDrawn', function(coords) {
+		drawnObjects.push({
+			startX : coords.startX,
+			startY : coords.startY,
+			endX : coords.endX,
+			endY : coords.endY
+		});
 		socket.broadcast.emit('updated_data', coords);
 	});
 });

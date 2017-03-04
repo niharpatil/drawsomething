@@ -20,6 +20,15 @@ socket.on('updated_data', function(coords) {
 	context.stroke();
 });
 
+socket.on('join_session', function(drawnObjects) {
+	drawnObjects.forEach(function(coords){
+		context.beginPath();
+		context.moveTo(coords.startX,coords.startY);
+		context.lineTo(coords.endX,coords.endY);
+		context.stroke();
+	});
+});
+
 cEl.mouseup(function(){
 	mouseDown = false;
 });
