@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "express": "^4.15.0",
+    "handlebars": "^4.0.6",
+    "handlebars-loader": "^1.4.0",
+    "hbs": "^4.0.1",
+    "socket.io": "^1.7.2",
+    "socket.io-client": "^1.7.3"
+  },
+  "devDependencies": {
+    "socket.io": "^1.7.2",
+    "socket.io-client": "^1.7.3",
+    "webpack": "^2.2.1"
+  },
+  "scripts": {
+    "build": "webpack -w"
+  },
+  "name": "socketTest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}
