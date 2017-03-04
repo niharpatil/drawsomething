@@ -1332,7 +1332,7 @@ __webpack_require__(23)
 /* 22 */
 /***/ (function(module, exports) {
 
-var socket = io('http://localhost:3000');
+var socket = io('https://warm-journey-77092.herokuapp.com');
 
 module.exports = socket;
 
