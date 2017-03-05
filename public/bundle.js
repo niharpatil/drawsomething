@@ -70,7 +70,7 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-var socket = io('https://warm-journey-77092.herokuapp.com');
+var socket = io('http://localhost:3000');
 
 
 socket.on('update_users', function(users) {
@@ -82,6 +82,10 @@ socket.on('update_users', function(users) {
 
 socket.on('user_is_drawing', function (client) {
 	$('#drawers').html(client.text + ' is drawing at (' + client.xCoord +', ' + client.yCoord + ')' );
+});
+
+$('#clear').click(function(){
+	socket.emit('clear_drawing', socket.id);
 });
 
 module.exports = socket
@@ -112,6 +116,10 @@ socket.on('updated_data', function(coords) {
 	context.moveTo(coords.startX,coords.startY);
 	context.lineTo(coords.endX,coords.endY);
 	context.stroke();
+});
+
+socket.on('restart_drawing_state', function (smth) {
+	context.clearRect(0, 0, canvas.width, canvas.height);
 });
 
 socket.on('join_session', function(drawnObjects) {

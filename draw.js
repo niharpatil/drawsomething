@@ -22,6 +22,10 @@ socket.on('updated_data', function(coords) {
 	context.stroke();
 });
 
+socket.on('restart_drawing_state', function (smth) {
+	context.clearRect(0, 0, canvas.width, canvas.height);
+});
+
 socket.on('join_session', function(drawnObjects) {
 	drawnObjects.forEach(function(coords){
 		context.beginPath();

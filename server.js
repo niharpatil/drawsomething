@@ -42,7 +42,11 @@ io.on('connection', function(socket){
 	});
 	socket.on('isDrawing', function(client) {
 		io.emit('user_is_drawing', client);
-	})
+	});
+	socket.on('clear_drawing', function (id) {
+		drawnObjects = [];
+		io.emit('restart_drawing_state', null);
+	});
 });
 
 app.get('/', function(request, response) {
