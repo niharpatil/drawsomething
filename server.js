@@ -16,9 +16,21 @@ var io = require('socket.io')(server);
 
 var drawnObjects = [];
 
+var users = [];
+
+
+
 io.on('connection', function(socket){
 	socket.emit('join_session', drawnObjects);
-	io.emit('user_joined', socket.id);
+	socket.on('disconnect', function(){
+		var index = users.indexOf(socket.id);
+		if(index > -1){
+			users.splice(index,1);
+			io.emit('update_users', users);
+		}
+	})
+	users.push(socket.id);
+	io.emit('update_users', users);
 	socket.on('lineDrawn', function(coords) {
 		drawnObjects.push({
 			startX : coords.startX,
@@ -28,6 +40,9 @@ io.on('connection', function(socket){
 		});
 		socket.broadcast.emit('updated_data', coords);
 	});
+	socket.on('isDrawing', function(client) {
+		io.emit('user_is_drawing', client);
+	})
 });
 
 app.get('/', function(request, response) {

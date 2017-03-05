@@ -13,6 +13,8 @@ var startY = 0;
 var endX = 0;
 var endY = 0;
 
+var isDrawing = false;
+
 socket.on('updated_data', function(coords) {
 	context.beginPath();
 	context.moveTo(coords.startX,coords.startY);
@@ -48,8 +50,14 @@ cEl.mousemove(function(e){
 			startY: startY,
 			endY: endY
 		});
+		socket.emit('isDrawing', {
+			text: socket.id,
+			xCoord: endX,
+			yCoord: endY
+		});
 		startX = endX;
 		startY = endY;
+	} else {
 	}
 })
 

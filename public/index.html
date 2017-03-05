@@ -7,8 +7,8 @@
 
 	<body>
 		<nav>
-		    <div class="nav-wrapper">
-		    <a href="/" class="brand-logo">Draw Something!</a>
+		    <div class="nav-wrapper" style="background-color:#000">
+		    <a href="/" class="brand-logo center">Draw Something!</a>
 		    	<ul id="nav-mobile" class="right hide-on-med-and-down">
 		    	</ul>
 		    </div>
@@ -19,8 +19,9 @@
 					<canvas id="myCanvas" height="300" width="500" style="border:1px solid #000000; position:relative;"></canvas>
 				</div>
 				<div class="col s12 l6">
+					<p id="drawers"></p>
 					<ul id="users">
-						<li>user one</li>
+						<li>Current Users</li>
 					</ul>
 				</div>
 			</div>
@@ -31,4 +32,5 @@
 	<script type="text/javascript" src="socket.io.min.js"></script>
 	<script type="text/javascript" src="jquery.min.js"></script>
 	<script type="text/javascript" src="bundle.js"></script>
+
 </html>
