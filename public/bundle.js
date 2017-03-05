@@ -70,7 +70,7 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-var socket = io('http://localhost:3000');
+var socket = io('https://warm-journey-77092.herokuapp.com');
 
 
 socket.on('update_users', function(users) {
