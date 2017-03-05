@@ -55,7 +55,7 @@ cEl.mousemove(function(e){
 			endY: endY
 		});
 		socket.emit('isDrawing', {
-			text: socket.id,
+			userid: socket.id,
 			xCoord: endX,
 			yCoord: endY
 		});

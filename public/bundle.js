@@ -70,18 +70,18 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-var socket = io('https://warm-journey-77092.herokuapp.com');
+var socket = io('http://localhost:3000');
 
 
 socket.on('update_users', function(users) {
 	$('#users').html('');
-	users.forEach(function(userid){
-		$('#users').append('<li> UserId: '+userid+'</li>');
+	users.forEach(function(user){
+		$('#users').append('<li> Username: '+user.username+'</li>');
 	})
 });
 
 socket.on('user_is_drawing', function (client) {
-	$('#drawers').html(client.text + ' is drawing at (' + client.xCoord +', ' + client.yCoord + ')' );
+	$('#drawers').html(client.username + ' is drawing at (' + client.xCoord +', ' + client.yCoord + ')' );
 });
 
 $('#clear').click(function(){
@@ -151,7 +151,7 @@ cEl.mousemove(function(e){
 			endY: endY
 		});
 		socket.emit('isDrawing', {
-			text: socket.id,
+			userid: socket.id,
 			xCoord: endX,
 			yCoord: endY
 		});
