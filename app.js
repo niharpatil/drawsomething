@@ -1,7 +1,6 @@
 
 require('./client')
 require('./draw')
-require('vue');
 
 // import * as Vuestrap from 'vue-strap';
 
