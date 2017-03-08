@@ -37,6 +37,7 @@ socket.on('join_session', function(drawnObjects) {
 
 cEl.mouseup(function(){
 	mouseDown = false;
+	socket.emit('is_not_drawing', socket.id);
 });
 
 cEl.mousemove(function(e){

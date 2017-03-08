@@ -70,7 +70,7 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-var socket = io('https://warm-journey-77092.herokuapp.com');
+var socket = io('http://drawsocket.herokuapp.com/');
 
 
 socket.on('update_users', function(users) {
@@ -133,6 +133,7 @@ socket.on('join_session', function(drawnObjects) {
 
 cEl.mouseup(function(){
 	mouseDown = false;
+	socket.emit('is_not_drawing', socket.id);
 });
 
 cEl.mousemove(function(e){

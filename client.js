@@ -1,4 +1,4 @@
-var socket = io('https://warm-journey-77092.herokuapp.com');
+var socket = io('http://drawsocket.herokuapp.com/');
 
 
 socket.on('update_users', function(users) {
