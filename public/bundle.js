@@ -143,8 +143,8 @@ socket.on('join_session', function(drawnObjects) {
 });
 
 socket.on('draw_text', function(text) {
-	context.fillText(text);
-})
+	context.fillText(text,200,100);
+});
 
 cEl.on('mouseup touchend', function(){
 	mouseDown = false;
