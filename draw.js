@@ -35,14 +35,16 @@ socket.on('join_session', function(drawnObjects) {
 	});
 });
 
+socket.on('draw_text', function(text) {
+	context.fillText(text);
+})
+
 cEl.on('mouseup touchend', function(){
-	e.preventDefault();
 	mouseDown = false;
 	socket.emit('is_not_drawing', socket.id);
 });
 
 cEl.on('mousemove touchmove',function(e){
-	e.preventDefault();
 	if(mouseDown) {
 		var offset = $(this).offset();
 		context.beginPath();
@@ -68,14 +70,11 @@ cEl.on('mousemove touchmove',function(e){
 	}
 })
 
-cEl.on('touchstart', function(){
-	socket.emit('touched','touched');
-})
-
 cEl.on('mousedown touchstart', function(e){
-	e.preventDefault();
 	var offset = $(this).offset();
 	mouseDown = true;
+	var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+	socket.emit('drawText', touch);
 	startX = e.pageX - offset.left;
 	startY = e.pageY - offset.top;
 });
