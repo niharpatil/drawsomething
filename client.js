@@ -4,7 +4,7 @@ var socket = io('http://drawsocket.herokuapp.com/');
 socket.on('update_users', function(users) {
 	$('#users').html('');
 	users.forEach(function(user){
-		$('#users').append('<li> Username: '+user.username+'</li>');
+		$('#users').append('<li class="collection-item">'+user.username+'</li>');
 	})
 });
 

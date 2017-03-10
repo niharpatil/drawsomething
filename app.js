@@ -1,6 +1,7 @@
 
 require('./client')
 require('./draw')
+require('./canvasSetup')
 
 // import * as Vuestrap from 'vue-strap';
 

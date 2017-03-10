@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -76,7 +76,7 @@ var socket = io('http://drawsocket.herokuapp.com/');
 socket.on('update_users', function(users) {
 	$('#users').html('');
 	users.forEach(function(user){
-		$('#users').append('<li> Username: '+user.username+'</li>');
+		$('#users').append('<li class="collection-item">'+user.username+'</li>');
 	})
 });
 
@@ -92,6 +92,17 @@ module.exports = socket
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+var canvas = document.getElementById('myCanvas');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+$('#drawers').css('padding-top', window.innerHeight-100);
+
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var canvas = document.getElementById('myCanvas');
@@ -170,11 +181,12 @@ cEl.mousedown(function(e){
 });
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 __webpack_require__(0)
+__webpack_require__(2)
 __webpack_require__(1)
 
 // import * as Vuestrap from 'vue-strap';
