@@ -146,12 +146,12 @@ socket.on('draw_text', function(text) {
 	context.fillText(text,200,100);
 });
 
-cEl.on('mouseup touchend', function(){
+cEl.on('mouseup ', function(){
 	mouseDown = false;
 	socket.emit('is_not_drawing', socket.id);
 });
 
-cEl.on('mousemove touchmove',function(e){
+cEl.on('mousemove ',function(e){
 	if(mouseDown) {
 		var offset = $(this).offset();
 		context.beginPath();
@@ -177,11 +177,9 @@ cEl.on('mousemove touchmove',function(e){
 	}
 })
 
-cEl.on('mousedown touchstart', function(e){
+cEl.on('mousedown ', function(e){
 	var offset = $(this).offset();
 	mouseDown = true;
-	var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-	socket.emit('drawText', touch);
 	startX = e.pageX - offset.left;
 	startY = e.pageY - offset.top;
 });
