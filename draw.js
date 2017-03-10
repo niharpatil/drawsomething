@@ -35,12 +35,12 @@ socket.on('join_session', function(drawnObjects) {
 	});
 });
 
-cEl.mouseup(function(){
+cEl.on('mouseup touchend', function(){
 	mouseDown = false;
 	socket.emit('is_not_drawing', socket.id);
 });
 
-cEl.mousemove(function(e){
+cEl.on('mousemove touchmove',function(e){
 	if(mouseDown) {
 		var offset = $(this).offset();
 		context.beginPath();
@@ -66,7 +66,7 @@ cEl.mousemove(function(e){
 	}
 })
 
-cEl.mousedown(function(e){
+cEl.on('mousedown touchstart', function(e){
 	var offset = $(this).offset();
 	mouseDown = true;
 	startX = e.pageX - offset.left;
