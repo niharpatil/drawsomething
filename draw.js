@@ -36,11 +36,13 @@ socket.on('join_session', function(drawnObjects) {
 });
 
 cEl.on('mouseup touchend', function(){
+	e.preventDefault();
 	mouseDown = false;
 	socket.emit('is_not_drawing', socket.id);
 });
 
 cEl.on('mousemove touchmove',function(e){
+	e.preventDefault();
 	if(mouseDown) {
 		var offset = $(this).offset();
 		context.beginPath();
@@ -71,6 +73,7 @@ cEl.on('touchstart', function(){
 })
 
 cEl.on('mousedown touchstart', function(e){
+	e.preventDefault();
 	var offset = $(this).offset();
 	mouseDown = true;
 	startX = e.pageX - offset.left;
