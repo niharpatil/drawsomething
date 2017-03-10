@@ -66,6 +66,10 @@ cEl.on('mousemove touchmove',function(e){
 	}
 })
 
+cEl.on('touchstart', function(){
+	socket.emit('touched','touched');
+})
+
 cEl.on('mousedown touchstart', function(e){
 	var offset = $(this).offset();
 	mouseDown = true;

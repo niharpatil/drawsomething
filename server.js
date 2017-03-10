@@ -65,6 +65,15 @@ io.on('connection', function(socket){
 		drawnObjects = [];
 		io.emit('restart_drawing_state', null);
 	});
+	socket.on('touched', function(){
+		var coords = {
+			startX: 0,
+			endX: 500,
+			startY: 0,
+			endY: 500
+		}
+		io.emit('updated_data', coords);
+	});
 });
 
 app.get('/', function(request, response) {
