@@ -15,10 +15,31 @@ var endY = 0;
 
 var isDrawing = false;
 
+var lineColor = 'black';
+var lineThickness = 1;
+
+$('#red').click(function(){
+	lineColor='#c62828';
+});
+$('#blue').click(function(){
+	lineColor='#1976d2';
+});
+$('#green').click(function(){
+	lineColor='#388e3c';
+});
+
+$('#lineSize').val(1);
+$('#lineSize').change(function(){
+	lineThickness = $('#lineSize').val();
+	$('#thickness').html('<h5>Thickness: ' + lineThickness + '</h5>');
+})
+
 socket.on('updated_data', function(coords) {
 	context.beginPath();
 	context.moveTo(coords.startX,coords.startY);
 	context.lineTo(coords.endX,coords.endY);
+	context.lineWidth=coords.lineThickness;
+	context.strokeStyle=coords.lineColor;
 	context.stroke();
 });
 
@@ -31,6 +52,8 @@ socket.on('join_session', function(drawnObjects) {
 		context.beginPath();
 		context.moveTo(coords.startX,coords.startY);
 		context.lineTo(coords.endX,coords.endY);
+		context.lineWidth=coords.lineThickness;
+		context.strokeStyle=coords.lineColor;
 		context.stroke();
 	});
 });
@@ -52,12 +75,16 @@ cEl.on('mousemove ',function(e){
 		endX = e.pageX - offset.left;
 		endY = e.pageY - offset.top;
 		context.lineTo(endX,endY);
+		context.lineWidth = lineThickness;
+		context.strokeStyle = lineColor;
 		context.stroke();
 		socket.emit('lineDrawn', {
 			startX: startX,
 			endX: endX,
 			startY: startY,
-			endY: endY
+			endY: endY,
+			lineThickness: lineThickness,
+			lineColor: lineColor
 		});
 		socket.emit('isDrawing', {
 			userid: socket.id,

@@ -51,7 +51,9 @@ io.on('connection', function(socket){
 			startX : coords.startX,
 			startY : coords.startY,
 			endX : coords.endX,
-			endY : coords.endY
+			endY : coords.endY,
+			lineThickness: coords.lineThickness,
+			lineColor: coords.lineColor
 		});
 		socket.broadcast.emit('updated_data', coords);
 	});
