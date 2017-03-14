@@ -27,6 +27,9 @@ $('#blue').click(function(){
 $('#green').click(function(){
 	lineColor='#388e3c';
 });
+$('#white').click(function(){
+	lineColor='#ffffff';
+});
 
 $('#lineSize').val(1);
 $('#lineSize').change(function(){
