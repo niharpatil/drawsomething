@@ -1,5 +1,7 @@
-var socket = io('http://drawsocket.herokuapp.com/');
-
+// var socket = io('http://drawsocket.herokuapp.com/');
+var pathname = window.location.pathname;
+var namespace = pathname.substring(8);
+var socket = io('/'+namespace);
 
 socket.on('update_users', function(users) {
 	$('#users').html('');

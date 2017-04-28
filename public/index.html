@@ -1,57 +1,33 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Draw Something!</title>
-		<link rel="stylesheet" type="text/css" href="materialize.min.css">
-	</head>
+<head>
+  <title>Room Selection</title>
+  <link rel="stylesheet" type="text/css" href="/materialize.min.css">
+</head>
+<body>
+<div class="container">
+  <div class="row" style="padding-top: 30%;">
+    <form class="col s6" method="post" action="/createroom/">
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="Placeholder" id="canvas_create" type="text" name="canvas_create" class="validate">
+          <label class="active" for="first_name">Canvas to create</label>
+        </div>
+        <div class="col s12" style="text-align: center">
+            <button class="waves-effect waves-teal btn-flat" type="submit">Create a Canvas!</button>
+        </div>
+    </div>
+    </form>
+    <form class="col s6" method="post" action="/joinroom">
+       <div class="input-field col s12">
+          <input id="canvas_join" name="canvas_join"type="text" class="validate">
+          <label class="active" for="last_name">Canvas to join</label>
+        </div>
+        <div class="col s12" style="text-align: center">
+            <button class="waves-effect waves-teal btn-flat" type="submit">Join a Canvas!</button>
+        </div>
+    </form>
+</div>
 
-	<body>
-		<nav>
-		    <div class="nav-wrapper" >
-		    <a href="/" class="brand-logo center">Draw Something!</a>
-		    	<ul id="nav-mobile" class="right hide-on-med-and-down">
-		    	</ul>
-		    </div>
-	 	</nav>
-	 	<div class="row" style="position:fixed;  z-index: -1">
-	 		<div class="col s12">
-				<p id="drawers"></p>
-	 		</div>
-	 	</div>
-	 	<div style="position:absolute; padding-top: 20px;">
-	 		<div class="row">
-				<div class="col s12">
-					<button class="btn" id="clear">Clear</button>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col s12">
-				<a class="btn-floating btn-small red" id="red"><i class="material-icons"></i></a>	
-				<a class="btn-floating btn-small blue" id="blue"><i class="material-icons"></i></a>
-				<a class="btn-floating btn-small green" id="green"><i class="material-icons"></i></a>
-				<a class="btn-floating btn-small white" id="white"><i class="material-icons"></i></a>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col s12">
-						<h5 id="thickness">Thickness: 1</h5>
-						<p class="range-field">
-      				<input type="range" id="lineSize" min="1" max="10"/>
-    				</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col s12">
-						<h5>Current Users</h5>
-						<ul class="collection" id="users"></ul>
-					</div>
-			</div>	
-	 	</div>
-	 	<canvas id="myCanvas" style="border:1px solid #000000;"></canvas>
-	</body>
-	<style> nav {background-color:#000} html,body {overflow: hidden}</style>
-	<script type="text/javascript" src="socket.io.min.js"></script>
-	<script type="text/javascript" src="jquery.min.js"></script>
-	<script type="text/javascript" src="bundle.js"></script>
-
+</body>
 </html>

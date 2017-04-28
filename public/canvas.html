@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Draw Something!</title>
+		<link rel="stylesheet" type="text/css" href="/materialize.min.css">
+	</head>
+
+	<body>
+		<nav>
+		    <div class="nav-wrapper" >
+		    <a href="/" class="brand-logo center">Draw Something!</a>
+		    	<ul id="nav-mobile" class="right hide-on-med-and-down">
+		    	</ul>
+		    </div>
+	 	</nav>
+	 	<div class="row" style="position:fixed;  z-index: -1">
+	 		<div class="col s12">
+				<p id="drawers"></p>
+	 		</div>
+	 	</div>
+	 	<div style="position:absolute; padding-top: 20px;">
+	 		<div class="row">
+				<div class="col s12">
+					<button class="btn" id="clear">Clear</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s12">
+				<a class="btn-floating btn-small red" id="red"><i class="material-icons"></i></a>	
+				<a class="btn-floating btn-small blue" id="blue"><i class="material-icons"></i></a>
+				<a class="btn-floating btn-small green" id="green"><i class="material-icons"></i></a>
+				<a class="btn-floating btn-small white" id="white"><i class="material-icons"></i></a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s12">
+						<h5 id="thickness">Thickness: 1</h5>
+						<p class="range-field">
+      				<input type="range" id="lineSize" min="1" max="10"/>
+    				</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s12">
+						<h5>Current Users</h5>
+						<ul class="collection" id="users"></ul>
+					</div>
+			</div>	
+	 	</div>
+	 	<canvas id="myCanvas" style="border:1px solid #000000;"></canvas>
+	</body>
+	<style> nav {background-color:#000} html,body {overflow: hidden}</style>
+	<script type="text/javascript" src="/socket.io.min.js"></script>
+	<script type="text/javascript" src="/jquery.min.js"></script>
+	<script type="text/javascript" src="/bundle.js"></script>
+
+</html>
