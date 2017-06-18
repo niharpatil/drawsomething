@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Draw Something!</title>
+  <title>CanvasShare</title>
   <link rel="stylesheet" type="text/css" href="/materialize.min.css">
+  <style type="text/css">
+    body {
+      background-image: url('/pink_dust.png');
+      background-repeat: repeat;
+      color: white;
+    }
+  </style>
 </head>
 <body>
 <div class="container">
-<h1>Draw Something!</h1>
-<h4>You can either start by creating a canvas or joining one of your friends!</h4>
+<h3 class="center-align">Welcome to CanvasShare!</h3>
+<p class="flow-text">CanvasShare was made to alleviate the pain for teachers to connect their tablets to their projectors. Simply connect your computer to your projector and open the same canvas on your tablet and computer. You can either start by creating a canvas or joining an existing one.</p>
   <div class="row" style="padding-top: 10%;">
     <form class="col s6" method="post" action="/createroom/">
       <div class="row">
         <div class="input-field col s12">
-          <input placeholder="Placeholder" id="canvas_create" type="text" name="canvas_create" class="validate">
+          <input id="canvas_create" type="text" name="canvas_create" class="validate">
           <label class="active" for="first_name">Canvas to create</label>
         </div>
         <div class="col s12" style="text-align: center">
-            <button class="waves-effect waves-teal btn-flat" type="submit">Create a Canvas!</button>
+            <button class="waves-effect waves-teal btn-flat" type="submit" style="color:white">Create a Canvas!</button>
         </div>
     </div>
     </form>
@@ -26,9 +33,17 @@
           <label class="active" for="last_name">Canvas to join</label>
         </div>
         <div class="col s12" style="text-align: center">
-            <button class="waves-effect waves-teal btn-flat" type="submit">Join a Canvas!</button>
+            <button class="waves-effect waves-teal btn-flat" type="submit" style="color:white">Join a Canvas!</button>
         </div>
     </form>
+</div>
+<div class="row" style="padding-top: 100px;">
+  <div class="col s12">
+    <div class="center-align">
+          <img src="/logo.png" width=300px;>
+    </div>
+  </div>
+</div>
 </div>
 
 </body>
