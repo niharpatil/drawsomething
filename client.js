@@ -1,4 +1,3 @@
-// var socket = io('http://drawsocket.herokuapp.com/');
 var pathname = window.location.pathname;
 var namespace = pathname.substring(8);
 var socket = io('/'+namespace);
